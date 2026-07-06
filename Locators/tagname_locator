@@ -1,0 +1,14 @@
+import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+driver=webdriver.Chrome()
+driver.get("https://practicetestautomation.com/practice-test-login/")
+driver.maximize_window()
+time.sleep(2)
+links=driver.find_elements('tag name','a')
+print("no of links:",len(links))
+images=driver.find_elements('tag name','img')
+print("no of images:",len(images))
+div_eles=driver.find_elements('tag name','div')
+print("no of div tag elements:",len(div_eles))
+time.sleep(2)
