@@ -1,0 +1,29 @@
+import time
+# from urllib import request
+# from http.client import responses
+import requests
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+
+driver.get("https://testautomationpractice.blogspot.com/")
+driver.maximize_window()
+time.sleep(2)
+
+images=driver.find_elements('tag name','img')
+urls=[]
+for i in images:
+    if i.get_attribute('src')!=None:
+        urls+=[i.get_attribute('src')]
+print(urls)
+
+for i in urls:
+    response=requests.get(i)
+    if response.status_code>=400:
+        print(f'{i} is a broken image')
+    else:
+        print(f'{i} is not a broken image')
+time.sleep(2)
+
+
+
