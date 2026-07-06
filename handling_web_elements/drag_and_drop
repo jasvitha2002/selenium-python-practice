@@ -1,0 +1,31 @@
+import time
+from selenium import webdriver
+from selenium.webdriver import ActionChains
+driver=webdriver.Chrome()
+driver.implicitly_wait(10)
+# driver.get("https://testautomationpractice.blogspot.com/")
+driver.get("https://demoapps.qspiders.com/ui/dragDrop/dragToCorrect?sublist=2")
+
+driver.maximize_window()
+time.sleep(2)
+ob=ActionChains(driver)
+# ele=driver.find_element('id','draggable')
+# target=driver.find_element('id','droppable')
+# ob.drag_and_drop(ele,target).perform()
+
+
+mc=driver.find_element('xpath',"//div[text()='Mobile Charger']")
+target=driver.find_element('xpath',"//div[text()='Mobile Accessories']")
+ob.drag_and_drop(mc,target).perform()
+mc2=driver.find_element('xpath',"//div[text()='Mobile Cover']")
+target2=driver.find_element('xpath',"//div[text()='Mobile Accessories']")
+ob.drag_and_drop(mc2,target).perform()
+time.sleep(2)
+
+lc=driver.find_element('xpath',"//div[text()='Laptop Charger']")
+target3=driver.find_element('xpath',"//div[text()='Laptop Accessories']")
+ob.drag_and_drop(lc,target3).perform()
+lc2=driver.find_element('xpath',"//div[text()='Laptop Cover']")
+target3=driver.find_element('xpath',"//div[text()='Laptop Accessories']")
+ob.drag_and_drop(lc2,target3).perform()
+time.sleep(2)
