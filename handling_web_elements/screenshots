@@ -1,0 +1,32 @@
+#screenshot of particular element
+
+import time
+from selenium import webdriver
+driver=webdriver.Chrome()
+driver.get("https://testautomationpractice.blogspot.com/")
+driver.maximize_window()
+time.sleep(2)
+text_box=driver.find_element('id','name')
+button=driver.find_element('name', 'start')
+text_box.screenshot("text_box.png")
+button.screenshot("button.png")
+time.sleep(3)
+
+#using exception handling
+
+try:
+    import time
+    from selenium import webdriver
+    driver=webdriver.Chrome()
+    driver.get("https://testautomationpractice.blogspot.com/")
+    driver.maximize_window()
+    time.sleep(2)
+    driver.find_element('id','name').send_keys("Jasvitha")
+    driver.find_element('i', 'email').send_keys("Jasvitha23@gmail.com")
+    driver.save_screenshot(r"C:\Users\Admin\Desktop\pics\demo2.png")
+    time.sleep(3)
+except:
+    driver.save_screenshot('error.png')
+
+
+
