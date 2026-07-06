@@ -1,0 +1,23 @@
+import time
+from selenium import webdriver
+from selenium.webdriver.support.select import Select
+driver=webdriver.Chrome()
+driver.implicitly_wait(10)
+driver.get("https://testautomationpractice.blogspot.com/")
+driver.maximize_window()
+time.sleep(2)
+driver.find_element('id','txtDate').click()
+month=driver.find_element('class name','ui-datepicker-month')
+ob=Select(month)
+ob.select_by_visible_text('Feb')
+time.sleep(1)
+
+year=driver.find_element('class name','ui-datepicker-year')
+ob1=Select(year)
+ob1.select_by_visible_text('2025')
+time.sleep(1)
+
+driver.find_element('xpath','//a[@data-date="14"]').click()
+time.sleep(1)
+
+
