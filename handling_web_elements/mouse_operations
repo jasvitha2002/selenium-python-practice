@@ -1,0 +1,27 @@
+import time
+from selenium import webdriver
+from selenium.webdriver import ActionChains
+driver=webdriver.Chrome()
+driver.implicitly_wait(10)
+# driver.get("https://testautomationpractice.blogspot.com/")
+driver.get("https://demoapps.qspiders.com/ui/clickHold?sublist=0")
+
+driver.maximize_window()
+time.sleep(2)
+ob=ActionChains(driver)
+
+# ele=driver.find_element('id','name')
+# ob.context_click(ele).perform()
+# time.sleep(2)
+#
+# ele.send_keys("selenium")
+# ob.double_click(ele).perform()
+
+circle=driver.find_element('id','circle')
+ob.click_and_hold(circle).pause(1).release().perform()
+time.sleep(2)
+
+# point_me=driver.find_element('xpath',"//button[text()='Point Me']")
+# laptop=driver.find_element('xpath',"//a[text()='Laptops']")
+# ob.move_to_element(point_me).move_to_element(laptop).perform()
+# time.sleep(2)
