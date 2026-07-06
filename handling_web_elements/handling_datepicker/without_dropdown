@@ -1,0 +1,18 @@
+import time
+from selenium import webdriver
+driver=webdriver.Chrome()
+driver.implicitly_wait(10)
+driver.get("https://testautomationpractice.blogspot.com/")
+driver.maximize_window()
+time.sleep(2)
+driver.find_element('id','datepicker').click()
+while True:
+    month=driver.find_element('class name','ui-datepicker-month').text
+    year=driver.find_element('class name','ui-datepicker-year').text
+    if month=='February' and year=='2025':
+         break
+    else:
+        driver.find_element('xpath','//span[text()="Prev"]').click()
+driver.find_element('xpath',"//a[text()='16']").click()
+time.sleep(3)
+
