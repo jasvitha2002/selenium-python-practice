@@ -1,0 +1,52 @@
+#time.sleep()
+
+import time
+from selenium import webdriver
+driver=webdriver.Chrome()
+driver.get('http://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+driver.maximize_window()
+time.sleep(5)
+driver.find_element('name','username').send_keys('Admin')
+driver.find_element('name','password').send_keys('admin123')
+driver.find_element('xpath','//button[@type="submit"]').click()
+time.sleep(5)
+driver.find_element('xpath','//a[@href="/web/index.php/admin/viewAdminModule"]').click()
+time.sleep(5)
+
+#Implicit wait
+
+import time
+from selenium import webdriver
+driver=webdriver.Chrome()
+driver.implicitly_wait(30)
+driver.get('http://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+driver.maximize_window()
+driver.find_element('name','username').send_keys('Admin')
+driver.find_element('name','password').send_keys('admin123')
+driver.find_element('xpath','//button[@type="submit"]').click()
+driver.find_element('xpath','//a[@href="/web/index.php/admin/viewAdminModule"]').click()
+time.sleep(3)
+
+#Explicit wait
+
+import time
+from selenium import webdriver
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
+driver=webdriver.Chrome()
+driver.get('http://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+driver.maximize_window()
+ob=WebDriverWait(driver,10)
+un_text_box=ob.until(expected_conditions.presence_of_element_located(("name","username")))
+un_text_box.send_keys('Admin')
+driver.find_element('name','password').send_keys('admin123')
+driver.find_element('xpath','//button[@type="submit"]').click()
+admin_button=ob.until(expected_conditions.presence_of_element_located(("xpath","//a[@href='/web/index.php/admin/viewAdminModule']")))
+admin_button.click()
+
+
+
+
+
+
+
