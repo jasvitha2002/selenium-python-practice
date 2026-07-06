@@ -1,0 +1,44 @@
+import time
+from selenium import webdriver
+from selenium.webdriver.support.select import Select
+
+driver=webdriver.Chrome()
+driver.implicitly_wait(10)
+driver.get("https://testautomationpractice.blogspot.com/")
+driver.maximize_window()
+time.sleep(2)
+
+drop=driver.find_element('id','country')
+ob=Select(drop)
+
+list_options=ob.options
+print(len(list_options))
+
+
+ob.select_by_index(3)
+ob.select_by_value('germany')
+ob.select_by_visible_text('Germany')
+
+
+drop=driver.find_element('id','animals')
+ob=Select(drop)
+
+list_options=ob.options
+for i in list_options:
+    print(i.text)
+
+ob.select_by_visible_text('Cheetah')
+ob.select_by_visible_text('Dog')
+ob.select_by_visible_text('Elephant')
+
+selected_options=ob.all_selected_options
+for i in selected_options:
+    print(i.text)
+print(ob.first_selected_option.text)
+ob.deselect_by_visible_text('Dog')
+ob.deselect_all()
+time.sleep(2)
+
+
+
+
