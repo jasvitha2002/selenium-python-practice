@@ -1,0 +1,41 @@
+import time
+from selenium import webdriver
+from selenium.webdriver import ActionChains,Keys
+driver=webdriver.Chrome()
+driver.implicitly_wait(10)
+driver.get("https://testautomationpractice.blogspot.com/")
+driver.maximize_window()
+time.sleep(2)
+ob=ActionChains(driver)
+
+name_text_box=driver.find_element('id','name')
+data='selenium'
+name_text_box.send_keys(data)
+ob.key_down(Keys.CONTROL).send_keys('a').key_up(Keys.CONTROL).perform()
+time.sleep(2)
+ob.key_down(Keys.CONTROL).send_keys('c').key_up(Keys.CONTROL).perform()
+time.sleep(2)
+ob.key_down(Keys.TAB).perform()
+time.sleep(2)
+ob.key_down(Keys.CONTROL).send_keys('v').key_up(Keys.CONTROL).perform()
+time.sleep(2)
+
+# ob.key_down(Keys.CONTROL).send_keys('a').key_up(Keys.CONTROL).perform()
+# time.sleep(2)
+#
+# ob.key_down(Keys.BACKSPACE).perform()
+# time.sleep(2)
+
+for i in data:
+    ob.key_down(Keys.BACKSPACE).perform()
+    time.sleep(2)
+
+for i in range(5):
+    ob.key_down(Keys.PAGE_DOWN).perform()
+    time.sleep(2)
+
+for i in range(5):
+    ob.key_down(Keys.PAGE_UP).perform()
+    time.sleep(2)
+
+
