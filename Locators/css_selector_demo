@@ -1,0 +1,10 @@
+import time
+from selenium import webdriver
+driver=webdriver.Chrome()
+driver.get('https://www.instagram.com/')
+driver.maximize_window()
+time.sleep(3)
+driver.find_element('id','_R_1h5l6n6pcldcpbn6b5ipamH1_').send_keys('candyplumps@gmail.com')
+driver.find_element('css selector','input[type="password"]').send_keys('pinkyplumps')
+driver.find_element('css selector','div[role="none"]').click()
+time.sleep(9)
