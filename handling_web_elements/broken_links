@@ -1,0 +1,30 @@
+import time
+# from urllib import request
+
+# from http.client import responses
+import requests
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+
+driver.get("https://testautomationpractice.blogspot.com/")
+driver.maximize_window()
+time.sleep(2)
+
+links=driver.find_elements('tag name','a')
+urls=[]
+for i in links:
+    if i.get_attribute('href')!=None:
+        urls+=[i.get_attribute('href')]
+print(urls)
+
+for i in urls:
+    response=requests.get(i)
+    if response.status_code>=400:
+        print(f'{i} is a broken link')
+    else:
+        print(f'{i} is not a broken link')
+time.sleep(2)
+
+
+
