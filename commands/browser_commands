@@ -1,0 +1,11 @@
+import time
+from selenium import webdriver
+driver=webdriver.Chrome()
+driver.get('https://testautomationpractice.blogspot.com/')
+driver.maximize_window()
+time.sleep(2)
+driver.find_element('xpath','//button[text()="New Tab"]').click()
+time.sleep(2)
+driver.close()
+driver.quit()
+time.sleep(2)
