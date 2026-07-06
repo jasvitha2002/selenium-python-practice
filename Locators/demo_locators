@@ -1,0 +1,16 @@
+import time
+from selenium import webdriver
+driver=webdriver.Chrome()
+driver.get('https://demoapps.qspiders.com/ui?scenario=1/')
+driver.maximize_window()
+time.sleep(2)
+driver.find_element('id','name').send_keys('Jasvitha')
+driver.find_element('name','email').send_keys('Jasvitha23@gmail.com')
+driver.find_element('css selector','input[placeholder="Enter your password"]').send_keys('Sandra')
+driver.find_element('css selector','button[type="submit"]').click()
+time.sleep(3)
+
+driver.find_element('css selector','input[placeholder="Enter your email"]').send_keys('Jasvitha23@gmail.com')
+driver.find_element('css selector','input[type="password"]').send_keys('Sandra')
+driver.find_element('class name', 'bg-orange-500').click()
+time.sleep(3)
