@@ -1,0 +1,27 @@
+import time
+from selenium import webdriver
+driver=webdriver.Chrome()
+driver.implicitly_wait(10)
+driver.get("https://testautomationpractice.blogspot.com/")
+driver.maximize_window()
+time.sleep(2)
+
+
+driver.find_element('id','alertBtn').click()
+time.sleep(2)
+var=driver.switch_to.alert
+var.accept()
+
+driver.find_element('id','confirmBtn').click()
+time.sleep(2)
+var=driver.switch_to.alert
+var.dismiss()
+
+driver.find_element('id','promptBtn').click()
+time.sleep(2)
+var=driver.switch_to.alert
+print(var.text)
+var.send_keys('Rabada')
+var.dismiss()
+
+time.sleep(2)
