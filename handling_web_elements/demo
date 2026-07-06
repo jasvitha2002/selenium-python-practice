@@ -1,0 +1,140 @@
+import time
+from selenium import webdriver
+from selenium.webdriver.support.select import Select
+driver=webdriver.Chrome()
+driver.implicitly_wait(10)
+driver.get("https://demoapps.qspiders.com/ui?scenario=1")
+driver.maximize_window()
+time.sleep(2)
+
+driver.find_element('xpath',"//a[@href='/ui/link']").click()
+time.sleep(2)
+
+
+links=driver.find_elements('tag name','a')
+print(len(links))
+
+
+for i in links:
+    print(i.text)
+
+
+for i in links:
+    if i.text=='Beauty':
+        i.click()
+        time.sleep(2)
+        break
+
+
+
+driver.find_element('xpath',"//section[text()='Check Box']").click()
+checkboxes=driver.find_elements('xpath',"//input[@type='checkbox']")
+print(len(checkboxes))
+
+for i in checkboxes:
+    i.click()
+time.sleep(1)
+
+for i in checkboxes[::-1]:
+    i.click()
+
+
+for i in checkboxes[:-4:-1]:
+    i.click()
+    time.sleep(3)
+
+for i in checkboxes:
+    if i.get_attribute('name') in ['mode']:
+        i.click()
+        time.sleep(1)
+
+for i in checkboxes:
+    if i.get_attribute('id') in ['domain_b', 'mode_b', 'mode_f']:
+        i.click()
+time.sleep(3)
+
+
+driver.find_element('xpath',"//section[text()='Radio Button']").click()
+rad_buttons=driver.find_elements('xpath',"//input[@type='radio']")
+print(len(rad_buttons))
+
+for i in rad_buttons:
+    if i.get_attribute('value') in ['wallet']:
+        i.click()
+        time.sleep(1)
+
+
+for i in rad_buttons:
+    if i.get_attribute('value') in ['Upi']:
+        i.click()
+        time.sleep(1-0)
+
+
+driver.find_element('xpath',"//section[text()='Dropdown']").click()
+country_code=driver.find_element('id','country_code')
+ob=Select(country_code)
+list_options=ob.options
+print(len(list_options))
+
+ob.select_by_visible_text('+01')
+ob.select_by_value('+91')
+
+country=driver.find_element('id','select3')
+ob1=Select(country)
+list_options1=ob1.options
+print(len(list_options1))
+
+ob1.select_by_visible_text('India')
+
+driver.find_element('id','phone').send_keys('1234567890')
+
+driver.find_element('id','female').click()
+
+state=driver.find_element('id','select5')
+ob2=Select(state)
+list_options2=ob2.options
+print(len(list_options2))
+
+ob2.select_by_index(18)
+
+
+city = driver.find_element( 'xpath',  '//option[@value="South Goa"]/parent::select')
+ob3 = Select(city)
+list_options3=ob3.options
+print(len(list_options3))
+
+ob3.select_by_value('South Goa')
+
+product = driver.find_element( 'id',  'select7')
+ob4 = Select(product)
+list_options4=ob4.options
+print(len(list_options4))
+
+ob4.select_by_value('4')
+
+driver.find_element('xpath','//a[@href="/ui/dropdown/multiSelect?sublist=1"]').click()
+
+drop6=driver.find_element('id','select-multiple-native')
+ob6=Select(drop6)
+list_options6=ob6.options
+for i in list_options6:
+    print(i.text)
+
+ob6.select_by_index(1)
+ob6.select_by_index(6)
+
+ob6.select_by_value('Mens Cotton Jacket')
+ob6.select_by_visible_text('DANVOUY Womens T Shi...')
+
+selected_options=ob6.all_selected_options
+for i in selected_options:
+    print(i.text)
+
+
+ob6.deselect_by_index(1)
+time.sleep(2)
+
+
+
+
+
