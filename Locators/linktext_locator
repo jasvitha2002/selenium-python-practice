@@ -1,0 +1,10 @@
+import time
+from selenium import webdriver
+driver=webdriver.Chrome()
+driver.get(r"https://practicetestautomation.com/practice-test-login/")
+driver.maximize_window()
+time.sleep(2)
+driver.find_element('link text','Practice Test Automation').click()
+driver.find_element('partial link text','Practice Test Automation').click()
+driver.find_element('partial link text','Practice Test').click()
+time.sleep(2)
