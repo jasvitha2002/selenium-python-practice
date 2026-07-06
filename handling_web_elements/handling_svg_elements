@@ -1,0 +1,16 @@
+import time
+from selenium import webdriver
+driver = webdriver.Chrome()
+driver.get("https://testautomationpractice.blogspot.com/")
+driver.maximize_window()
+time.sleep(2)
+svg_eles=driver.find_elements('xpath',"//*[name()='svg']")
+print(len(svg_eles))
+
+circle=driver.find_element('xpath',"//*[name()='svg']//*[name()='circle']")
+print(circle.get_attribute('fill'))
+rectangle=driver.find_element('xpath',"//*[name()='svg']//*[name()='rect']")
+print(rectangle.get_attribute('fill'))
+polygon=driver.find_element('xpath',"//*[name()='svg']//*[name()='polygon']")
+print(polygon.get_attribute('fill'))
+time.sleep(2)
