@@ -1,0 +1,35 @@
+import time
+from selenium import webdriver
+driver=webdriver.Chrome()
+driver.implicitly_wait(10)
+# driver.get("https://demoapps.qspiders.com/ui/frames?sublist=0")
+# driver.get('https://demoapps.qspiders.com/ui/frames/nested?sublist=1')
+driver.get('https://demoapps.qspiders.com/ui/frames/multiple?sublist=2')
+driver.maximize_window()
+time.sleep(2)
+
+# f=driver.find_element('xpath',"//iframe[@class='w-full h-96']")
+# driver.switch_to.frame(f)
+# driver.find_element('id','username').send_keys('Holland')
+
+# outer_frame=driver.find_element('xpath',"//iframe[@class='w-full h-96']")
+# driver.switch_to.frame(outer_frame)
+# inner_frame=driver.find_element('xpath',"//section[@class='main_form_container']/div/iframe")
+# driver.switch_to.frame(inner_frame)
+#
+# driver.find_element('id','email').send_keys('Senorita@gmail.com')
+# driver.find_element('id','password').send_keys('Senorita')
+# driver.find_element('id','confirm-password').send_keys('Senorita')
+# driver.switch_to.parent_frame()
+# driver.switch_to.default_content()
+
+frame_1=driver.find_element('xpath',"//section[@class='flex gap-10 w-full']/div[1]/iframe")
+driver.switch_to.frame(frame_1)
+driver.find_element('id','email').send_keys('Senorita@gmail.com')
+driver.switch_to.default_content()
+frame_2=driver.find_element('xpath',"//section[@class='flex gap-10 w-full']/div[2]/iframe")
+driver.switch_to.frame(frame_2)
+driver.find_element('id','username').send_keys('Senorita')
+time.sleep(2)
+
+
