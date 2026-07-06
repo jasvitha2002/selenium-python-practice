@@ -1,0 +1,13 @@
+import time
+from selenium import webdriver
+driver=webdriver.Chrome()
+driver.get(r'https://testautomationpractice.blogspot.com/')
+driver.maximize_window()
+time.sleep(2)
+Male=driver.find_element('id',"male")
+print(Male.is_enabled())
+print(Male.is_displayed())
+print(Male.is_selected())
+Male.click()
+print(Male.is_selected())
+time.sleep(5)
