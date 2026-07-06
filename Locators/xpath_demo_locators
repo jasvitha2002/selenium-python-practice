@@ -1,0 +1,11 @@
+import time
+from selenium import webdriver
+driver=webdriver.Chrome()
+driver.get('https://www.amazon.in/?&tag=googhydrabk1-21&ref=pd_sl_7hz2t19t5c_e&adgrpid=155259815513&hvpone=&hvptwo=&hvadid=674842289437&hvpos=&hvnetw=g&hvrand=6281484177006270086&hvqmt=e&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9062061&hvtargid=kwd-10573980&hydadcr=14453_2316415&gad_source=1/')
+driver.maximize_window()
+time.sleep(2)
+driver.find_element('css selector', 'input[aria-label="Search Amazon.in"]').send_keys('Mars Lipstick')
+driver.find_element('css selector', 'input[value="Go"]').click()
+time.sleep(5)
+driver.find_element('xpath', "//span[contains(text(),'Long Lasting Lip Crayon')]").click()
+time.sleep(5)
