@@ -1,0 +1,17 @@
+import time
+from selenium import webdriver
+from selenium.webdriver.support.select import Select
+driver=webdriver.Chrome()
+driver.implicitly_wait(10)
+driver.get("https://demoapps.qspiders.com/ui/hidden?sublist=0")
+driver.maximize_window()
+time.sleep(2)
+driver.find_element('xpath',"//button[text()='Add Customer']").click()
+time.sleep(2)
+driver.find_element('id',"customerName").send_keys("Damian")
+driver.find_element('id','customerEmail').send_keys("damian123@gmail.com")
+prod=driver.find_element('id',"prod")
+ob=Select(prod)
+ob.select_by_visible_text('Mobile')
+driver.find_element('id',"message").send_keys("saranghae")
+driver.find_element('id',"hiddendiv").click()
