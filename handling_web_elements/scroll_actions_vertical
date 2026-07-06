@@ -1,0 +1,45 @@
+import time
+from selenium import webdriver
+from selenium.webdriver import ActionChains
+driver=webdriver.Chrome()
+
+driver.get("https://testautomationpractice.blogspot.com/")
+driver.maximize_window()
+time.sleep(2)
+ob=ActionChains(driver)
+ob.scroll_by_amount(0,1000).perform()
+time.sleep(2)
+
+ele=driver.find_element('id','singleFileInput')
+ob.scroll_to_element(ele).perform()
+time.sleep(2)
+
+
+driver.execute_script('window.scrollBy(0,document.body.scrollHeight)')
+time.sleep(2)
+
+driver.execute_script('window.scrollBy(0,-document.body.scrollHeight)')
+time.sleep(2)
+
+y_axis_val=driver.execute_script("return window.pageYOffset;")
+print(y_axis_val)
+
+driver.execute_script('window.scrollBy(0,1700)')
+time.sleep(2)
+
+
+driver.execute_script('window.scrollBy(0,-850)')
+time.sleep(2)
+
+
+driver.execute_script('window.scrollBy(0,-850)')
+time.sleep(2)
+
+ele=driver.find_element('id','singleFileInput')
+driver.execute_script("arguments[0].scrollIntoView();",ele)
+time.sleep(2)
+
+
+
+
+
