@@ -1,0 +1,8 @@
+import time
+from selenium import webdriver
+driver=webdriver.Chrome()
+driver.get("https://practicetestautomation.com/practice-test-login/")
+driver.maximize_window()
+time.sleep(2)
+links=driver.find_elements('partial link text','P')
+print(len(links))
