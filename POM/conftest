@@ -1,0 +1,13 @@
+import pytest
+@pytest.fixture
+
+def setup():
+    import time
+    from selenium import webdriver
+    driver=webdriver.Chrome()
+    driver.implicitly_wait(10)
+    driver.get("https://practicetestautomation.com/practice-test-login/")
+    driver.maximize_window()
+    yield driver
+    time.sleep(5)
+    driver.close()
