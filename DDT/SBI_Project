@@ -1,0 +1,40 @@
+import Utilities
+import time
+from selenium import webdriver
+driver=webdriver.Chrome()
+driver.implicitly_wait(10)
+driver.get(r"https://homeloans.sbi.bank.in/calculators")
+driver.maximize_window()
+time.sleep(2)
+path=r"C:\Users\Admin\Documents\DDT.xlsx"
+rows=Utilities.get_row_count(path,"Sheet1")
+for r in range(2,rows+1):
+    AMOUNT = Utilities.read_data(path, "Sheet1", r, 1)
+    PERIOD = Utilities.read_data(path, "Sheet1", r, 2)
+    PERCENTAGE=Utilities.read_data(path, "Sheet1", r, 3)
+    exp_EMI = Utilities.read_data(path, "Sheet1", r, 4)
+
+    amt=driver.find_element("id", "loanamount_DEFAULTEMICAL")
+    amt.clear()
+    amt.send_keys(AMOUNT)
+    time.sleep(1)
+    period=driver.find_element("id", "loanTenureValue_DEFAULTEMICAL")
+    period.clear()
+    period.send_keys(PERIOD)
+    time.sleep(1)
+    percentage=driver.find_element("id", "loanInterestRate_DEFAULTEMICAL")
+    percentage.clear()
+    percentage.send_keys(PERCENTAGE)
+    time.sleep(2)
+
+    act_EMI=driver.find_element("id", "totalEmiDef").text
+    Utilities.write_data(path,'Sheet1',r,5,act_EMI[2::])
+
+    if str(exp_EMI)==act_EMI[2::]:
+        print("test is passed")
+        Utilities.write_data(path, "Sheet1", r, 6, "pass")
+    else:
+        print("test is failed")
+        Utilities.write_data(path, "Sheet1", r, 6, "fail")
+    time.sleep(2)
+time.sleep(3)
