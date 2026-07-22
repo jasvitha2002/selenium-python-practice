@@ -1,0 +1,14 @@
+class PRACTICE:
+    TestLoginPage='//a[@href="https://practicetestautomation.com/practice-test-login/"]'
+    TestExceptions='//a[@href="https://practicetestautomation.com/practice-test-login/"]'
+
+    def __init__(self,driver):
+        self.driver=driver
+
+    def click_TestLoginPage(self):
+        self.driver.find_element('xpath',self.TestLoginPage).click()
+
+    def click_TestExceptions(self):
+        self.driver.find_element('xpath',self.TestExceptions).click()
+
+
