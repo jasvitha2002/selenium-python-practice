@@ -1,0 +1,20 @@
+from loginpage import LOGIN
+from homepage import HOME
+from practicepage import PRACTICE
+
+def test_case(setup):
+    driver=setup
+
+
+    L=LOGIN(driver)
+    L.pass_un('student')
+    L.pass_pwd('Password123')
+    L.click_submit()
+
+    H=HOME(driver)
+    H.click_practice()
+    #H.click_logout()
+
+    P=PRACTICE(driver)
+    #P.click_TestLoginPage()
+    P.click_TestExceptions()
